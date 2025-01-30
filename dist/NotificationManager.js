@@ -23,9 +23,10 @@ var NotificationManager = /** @class */ (function () {
      * @static
      * @memberof NotificationManager
      */
-    NotificationManager.getContainer = function () {
+    NotificationManager.getContainer = function (devTools) {
+        if (devTools === void 0) { devTools = false; }
         if (!NotificationManager.container) {
-            NotificationManager.container = new NotificationContainer_1.default();
+            NotificationManager.container = new NotificationContainer_1.default(devTools);
         }
         return NotificationManager.container;
     };
@@ -55,7 +56,8 @@ var NotificationManager = /** @class */ (function () {
      * @memberof NotificationManager
      */
     NotificationManager.createNotification = function (options) {
-        var container = NotificationManager.getContainer();
+        var _a;
+        var container = NotificationManager.getContainer((_a = options.devTools) !== null && _a !== void 0 ? _a : false);
         var notification = new Notification_1.default(options);
         container.addNotification(notification);
         return notification;

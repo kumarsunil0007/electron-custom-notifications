@@ -11,5 +11,6 @@ export default interface INotificationOptions {
     delteIcon?: string;
     showClose?: boolean;
     showProgressbar?: boolean;
+    devTools?: boolean;
 }
 //# sourceMappingURL=INotificationOptions.d.ts.map

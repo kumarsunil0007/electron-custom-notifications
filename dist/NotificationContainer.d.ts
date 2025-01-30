@@ -49,7 +49,7 @@ declare class NotificationContainer {
      * Creates an instance of NotificationContainer.
      * @memberof NotificationContainer
      */
-    constructor();
+    constructor(devTools?: boolean);
     /**
      * Adds a notification logically (notifications[]) and
      * physically (DOM Element).

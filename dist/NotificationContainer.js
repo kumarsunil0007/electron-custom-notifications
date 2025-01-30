@@ -35,7 +35,8 @@ var NotificationContainer = /** @class */ (function () {
      * Creates an instance of NotificationContainer.
      * @memberof NotificationContainer
      */
-    function NotificationContainer() {
+    function NotificationContainer(devTools) {
+        if (devTools === void 0) { devTools = false; }
         var _this = this;
         /**
          * Determines if the container window has been loaded.
@@ -93,12 +94,15 @@ var NotificationContainer = /** @class */ (function () {
         }; // Since we're not displaying untrusted content 
         // (all links are opened in a real browser window), we can enable this.
         this.window = new electron_1.BrowserWindow(options);
+        // const distPath = path.join(__dirname, 'dist');
         this.window.setVisibleOnAllWorkspaces(true);
         this.window.loadURL(path.join("file://", __dirname, "/container.html"));
         //this.window.loadFile("./container.html");
         this.window.setIgnoreMouseEvents(true, { forward: true });
         this.window.showInactive();
-        // this.window.webContents.openDevTools({ mode: 'detach' });
+        if (devTools) {
+            this.window.webContents.openDevTools({ mode: 'detach' });
+        }
         electron_1.ipcMain.on("notification-clicked", function (e, id) {
             var notification = _this.notifications.find(function (notification) { return notification.id == id; });
             if (notification) {

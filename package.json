@@ -1,13 +1,13 @@
 {
   "name": "electron-custom-notifications",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Cross-platform notifications using Electron's BrowserWindow",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
   },
-  "author": "Kedi Agbogre",
+  "author": "Sunil Kumar",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.14.11",

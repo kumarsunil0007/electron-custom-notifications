@@ -27,9 +27,9 @@ class NotificationManager {
    * @static
    * @memberof NotificationManager
    */
-  private static getContainer(): NotificationContainer {
+  private static getContainer(devTools = false): NotificationContainer {
     if (!NotificationManager.container) {
-      NotificationManager.container = new NotificationContainer();
+      NotificationManager.container = new NotificationContainer(devTools);
     }
 
     return NotificationManager.container;
@@ -63,7 +63,7 @@ class NotificationManager {
   public static createNotification(
     options: INotificationOptions
   ): Notification {
-    const container = NotificationManager.getContainer();
+    const container = NotificationManager.getContainer(options.devTools ?? false);
     const notification = new Notification(options);
 
     container.addNotification(notification);
